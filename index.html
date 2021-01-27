@@ -29,7 +29,7 @@
                                     <input id="mobileAmount" type="text" class="form-control text-center" value="1">
                                     <button id="plusBtnMobile" class="btn btn-default"><i class="fas fa-plus"></i></button>
                                 </div>
-                                <h5 id="mobilePrice">$1219</h5>
+                                <h5> $<span id="mobilePrice">1219</span></h5>
                                 <img src="images/remove.png" alt="" class="remove-item">
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-md-5 center-item">
                                 <div class="input-group number-spinner">
-                                    <button id="minusCassingBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <button id="minusCasingBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
                                     <input id="casingAmount" type="text" class="form-control text-center" value="1">
                                     <button id="plusCaasingBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
@@ -77,7 +77,9 @@
     </section>
 
     <script>
+        
                       //Mobile Plus Button
+
         const plusBtnMobile = document.getElementById('plusBtnMobile');
         plusBtnMobile.addEventListener('click',function(){
         
@@ -90,7 +92,8 @@
         const mobilePriceNumber = parseFloat(mobilePrice);
         const totalMobilePrice = totalMobileAmount * 1219;
         document.getElementById('mobilePrice').innerText = totalMobilePrice;
-        
+
+        totalCalculate();
         })
                     //Mobile minus Button
 
@@ -110,6 +113,7 @@
         const totalMobilePrice = totalMobileAmount * 1219;
         document.getElementById('mobilePrice').innerText = totalMobilePrice;
         
+        totalCalculate();
         })
 
                     //casing plus button
@@ -126,13 +130,16 @@
         const casingPriceNumber = parseFloat(casingPrice);
         const totalCasingPrice = totalCasingAmount * 59;
         document.getElementById('casingPrice').innerText = totalCasingPrice;
+
+        totalCalculate();
         })
 
 
 
                 //casing minus button;
-        const minusCassingBtn = document.getElementById('minusCassingBtn');
-        minusCassingBtn.addEventListener('click',function(){
+
+        const minusCasingBtn = document.getElementById('minusCasingBtn');
+        minusCasingBtn.addEventListener('click',function(){
         
         const casingAmount = document.getElementById('casingAmount').value;
         const casingAmountNumber = parseFloat(casingAmount);
@@ -146,7 +153,24 @@
         const casingPriceNumber = parseFloat(casingPrice);
         const totalCasingPrice = totalCasingAmount * 59;
         document.getElementById('casingPrice').innerText = totalCasingPrice;
+
+        totalCalculate();
         })
+       
+        function totalCalculate() {
+
+        const mobileAmount = document.getElementById('mobileAmount');
+        const mobileAmountNumber = parseInt(mobileAmount.value) ; 
+
+        const casingAmount = document.getElementById('casingAmount');
+        const casingAmountNumber = parseInt(casingAmount.value) ; 
+
+        const totalProductsPrice = mobileAmountNumber * 1219 + casingAmountNumber * 59 ;
+        document.getElementById('total').innerText = totalProductsPrice ;
+
+        }
+
+
     </script>
 </body>
 
